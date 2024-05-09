@@ -101,7 +101,6 @@ namespace Project2 {
 			this->label1->Size = System::Drawing::Size(41, 13);
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"Логин:";
-			this->label1->Click += gcnew System::EventHandler(this, &RegistrationForm::label1_Click);
 			// 
 			// textBox2
 			// 

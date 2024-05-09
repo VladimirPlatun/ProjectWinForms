@@ -1,4 +1,5 @@
 #pragma once
+#include "RegistrationForm.h"
 
 namespace Project2 {
 
@@ -41,6 +42,8 @@ namespace Project2 {
 	private: System::Windows::Forms::Button^ registerButton;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Button^ registration_button;
+
 
 	private:
 		/// <summary>
@@ -56,16 +59,18 @@ namespace Project2 {
 		void InitializeComponent(void)
 		{
 			this->grpBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->registerButton = (gcnew System::Windows::Forms::Button());
-			this->textBoxLogin = (gcnew System::Windows::Forms::TextBox());
+			this->registration_button = (gcnew System::Windows::Forms::Button());
 			this->textBoxPassword = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxLogin = (gcnew System::Windows::Forms::TextBox());
+			this->registerButton = (gcnew System::Windows::Forms::Button());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->grpBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// grpBox1
 			// 
+			this->grpBox1->Controls->Add(this->registration_button);
 			this->grpBox1->Controls->Add(this->textBoxPassword);
 			this->grpBox1->Controls->Add(this->textBoxLogin);
 			this->grpBox1->Controls->Add(this->registerButton);
@@ -78,23 +83,31 @@ namespace Project2 {
 			this->grpBox1->TabStop = false;
 			this->grpBox1->Text = L"Авторизация";
 			// 
-			// label1
+			// registration_button
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(175, 47);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(38, 13);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Логин";
+			this->registration_button->Location = System::Drawing::Point(95, 232);
+			this->registration_button->Name = L"registration_button";
+			this->registration_button->Size = System::Drawing::Size(211, 33);
+			this->registration_button->TabIndex = 5;
+			this->registration_button->Text = L"Зарегистрироваться";
+			this->registration_button->UseVisualStyleBackColor = true;
+			this->registration_button->Click += gcnew System::EventHandler(this, &LoginForm::button1_Click);
 			// 
-			// label2
+			// textBoxPassword
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(175, 105);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(45, 13);
-			this->label2->TabIndex = 1;
-			this->label2->Text = L"Пароль";
+			this->textBoxPassword->Location = System::Drawing::Point(135, 121);
+			this->textBoxPassword->Multiline = true;
+			this->textBoxPassword->Name = L"textBoxPassword";
+			this->textBoxPassword->Size = System::Drawing::Size(127, 30);
+			this->textBoxPassword->TabIndex = 4;
+			// 
+			// textBoxLogin
+			// 
+			this->textBoxLogin->Location = System::Drawing::Point(135, 63);
+			this->textBoxLogin->Multiline = true;
+			this->textBoxLogin->Name = L"textBoxLogin";
+			this->textBoxLogin->Size = System::Drawing::Size(127, 30);
+			this->textBoxLogin->TabIndex = 3;
 			// 
 			// registerButton
 			// 
@@ -105,21 +118,23 @@ namespace Project2 {
 			this->registerButton->Text = L"Войти";
 			this->registerButton->UseVisualStyleBackColor = true;
 			// 
-			// textBoxLogin
+			// label2
 			// 
-			this->textBoxLogin->Location = System::Drawing::Point(135, 63);
-			this->textBoxLogin->Multiline = true;
-			this->textBoxLogin->Name = L"textBoxLogin";
-			this->textBoxLogin->Size = System::Drawing::Size(127, 30);
-			this->textBoxLogin->TabIndex = 3;
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(175, 105);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(45, 13);
+			this->label2->TabIndex = 1;
+			this->label2->Text = L"Пароль";
 			// 
-			// textBoxPassword
+			// label1
 			// 
-			this->textBoxPassword->Location = System::Drawing::Point(135, 121);
-			this->textBoxPassword->Multiline = true;
-			this->textBoxPassword->Name = L"textBoxPassword";
-			this->textBoxPassword->Size = System::Drawing::Size(127, 30);
-			this->textBoxPassword->TabIndex = 4;
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(175, 47);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(38, 13);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"Логин";
 			// 
 			// LoginForm
 			// 
@@ -135,5 +150,16 @@ namespace Project2 {
 
 		}
 #pragma endregion
-	};
+
+		Form^ currentForm = nullptr;
+
+
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+
+		registration_button->Enabled = false;
+		RegistrationForm^ Registration_Form = gcnew RegistrationForm();
+		Registration_Form->Show();
+	}
+};
 }

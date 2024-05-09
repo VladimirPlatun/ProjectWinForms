@@ -119,7 +119,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="RegistrationForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
   </ItemGroup>
