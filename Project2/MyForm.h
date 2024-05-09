@@ -34,6 +34,8 @@ namespace Project2 {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Label^ label2;
+	protected:
 
 	private:
 		/// <summary>
@@ -48,11 +50,29 @@ namespace Project2 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"MyForm";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->SuspendLayout();
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(330, 160);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(39, 13);
+			this->label2->TabIndex = 1;
+			this->label2->Text = L"женёк";
+			// 
+			// MyForm
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(992, 444);
+			this->Controls->Add(this->label2);
+			this->Name = L"MyForm";
+			this->Text = L"MyForm";
+			this->ResumeLayout(false);
+			this->PerformLayout();
+
 		}
 #pragma endregion
 	};
