@@ -39,7 +39,8 @@ namespace Project2 {
 	protected:
 	private: System::Windows::Forms::TextBox^ textBoxPassword;
 	private: System::Windows::Forms::TextBox^ textBoxLogin;
-	private: System::Windows::Forms::Button^ registerButton;
+	private: System::Windows::Forms::Button^ loginButton;
+
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ registration_button;
@@ -62,7 +63,7 @@ namespace Project2 {
 			this->registration_button = (gcnew System::Windows::Forms::Button());
 			this->textBoxPassword = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxLogin = (gcnew System::Windows::Forms::TextBox());
-			this->registerButton = (gcnew System::Windows::Forms::Button());
+			this->loginButton = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->grpBox1->SuspendLayout();
@@ -73,7 +74,7 @@ namespace Project2 {
 			this->grpBox1->Controls->Add(this->registration_button);
 			this->grpBox1->Controls->Add(this->textBoxPassword);
 			this->grpBox1->Controls->Add(this->textBoxLogin);
-			this->grpBox1->Controls->Add(this->registerButton);
+			this->grpBox1->Controls->Add(this->loginButton);
 			this->grpBox1->Controls->Add(this->label2);
 			this->grpBox1->Controls->Add(this->label1);
 			this->grpBox1->Location = System::Drawing::Point(244, 118);
@@ -109,14 +110,14 @@ namespace Project2 {
 			this->textBoxLogin->Size = System::Drawing::Size(127, 30);
 			this->textBoxLogin->TabIndex = 3;
 			// 
-			// registerButton
+			// loginButton
 			// 
-			this->registerButton->Location = System::Drawing::Point(95, 177);
-			this->registerButton->Name = L"registerButton";
-			this->registerButton->Size = System::Drawing::Size(211, 34);
-			this->registerButton->TabIndex = 2;
-			this->registerButton->Text = L"Войти";
-			this->registerButton->UseVisualStyleBackColor = true;
+			this->loginButton->Location = System::Drawing::Point(95, 177);
+			this->loginButton->Name = L"loginButton";
+			this->loginButton->Size = System::Drawing::Size(211, 34);
+			this->loginButton->TabIndex = 2;
+			this->loginButton->Text = L"Войти";
+			this->loginButton->UseVisualStyleBackColor = true;
 			// 
 			// label2
 			// 

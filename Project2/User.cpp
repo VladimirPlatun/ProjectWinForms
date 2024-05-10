@@ -1,6 +1,8 @@
 #include "User.h"
 #include "FileManager.h"
 
+User::User() :username(""), password(""), role("client") {}
+
 User::User(string username, string password, string role) :
 	username(username), password(password), role(role) {}
 
@@ -9,15 +11,41 @@ bool User::login(string username, string password)
 	return this->username == username && this->password == password;
 }
 
-bool User::registerUser(string username, string password, string confirmPassword, string role)
+string User::registerUser(string username, string password, string confirmPassword, string role)
 {
-	if (password == confirmPassword)
-	{
-		string userData = username + " " + password;
-		string filePath = "users.txt";
+	string filePath = "users.txt";
 
-		FileManager::saveToFile(filePath, userData);
-		return true;
+	if (username.empty())
+	{
+		return "Поле логина не может быть пустым";
 	}
-	return false;	
+
+	if (password.empty())
+	{
+		return "Поле пароля не может быть пустым";
+	}
+
+	if (FileManager::userExists(filePath, username))
+	{
+		return "Пользователь с таким именем уже существует.";
+	}
+
+	if (password != confirmPassword)
+	{
+		return "Пароли не совпадают.";
+	}
+
+	if (username.length() < 4)
+	{
+		return "Логин должен содержать не менее 4 букв";
+	}
+
+	if (password.length() <= 4 || !any_of(password.begin(), password.end(), ::isalpha))
+	{
+		return "Пароль должен быть длинее 4 символов и содержать хотя бы одну букву.";
+	}
+
+	string userData = username + " " + password;
+	FileManager::saveToFile(filePath, userData);
+	return "success";
 }

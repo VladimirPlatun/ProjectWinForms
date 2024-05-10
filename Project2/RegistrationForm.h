@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
+
 #include "User.h"
+#include "FileManager.h"
+
 #include <msclr/marshal_cppstd.h>
 
 
@@ -173,9 +176,9 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		string password = msclr::interop::marshal_as<std::string>(password_txtBox->Text);
 		string check_password = msclr::interop::marshal_as<std::string>(passwordCheck_txtBox->Text);
 
-		User newUser(username, password, "client");
-
-		if (newUser.registerUser(username, password, check_password, "client"))
+		User newUser;
+		string result = newUser.registerUser(username, password, check_password, "client");
+		if (result == "success")
 		{
 			MessageBox::Show("Пользователь успешно зарегистрирован!");
 			login_txtBox->Clear();
@@ -184,7 +187,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		}
 		else
 		{
-			MessageBox::Show("Пароли не совпадают!");
+			MessageBox::Show(msclr::interop::marshal_as<System::String^>(result));
 		}
 	}
 };
