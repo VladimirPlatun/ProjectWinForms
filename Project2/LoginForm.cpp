@@ -4,11 +4,11 @@ using namespace System;
 using namespace System::Windows::Forms;
 
 [STAThreadAttribute]
-int main(array<String^>^ args)
+void main(cli::array<String^>^ args)
 {
 	Application::SetCompatibleTextRenderingDefault(false);
 	Application::EnableVisualStyles();
-	Project2::LoginForm form;
+	Project2::LoginForm^ form = gcnew Project2::LoginForm();
 
-	Application::Run(% form);
+	Application::Run(form);
 }

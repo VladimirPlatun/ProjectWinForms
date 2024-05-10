@@ -1,4 +1,10 @@
 #pragma once
+#include <string>
+#include "User.h"
+#include <msclr/marshal_cppstd.h>
+
+
+using namespace std;
 
 namespace Project2 {
 
@@ -35,13 +41,16 @@ namespace Project2 {
 			}
 		}
 	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::TextBox^ login_txtBox;
 	protected:
-	private: System::Windows::Forms::TextBox^ textBox1;
+
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::TextBox^ password_txtBox;
+	private: System::Windows::Forms::TextBox^ passwordCheck_txtBox;
+
+
 	private: System::Windows::Forms::Label^ label3;
 
 	private:
@@ -58,24 +67,24 @@ namespace Project2 {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->passwordCheck_txtBox = (gcnew System::Windows::Forms::TextBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->password_txtBox = (gcnew System::Windows::Forms::TextBox());
+			this->login_txtBox = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->textBox3);
+			this->groupBox1->Controls->Add(this->passwordCheck_txtBox);
 			this->groupBox1->Controls->Add(this->label3);
 			this->groupBox1->Controls->Add(this->label2);
 			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Controls->Add(this->textBox2);
-			this->groupBox1->Controls->Add(this->textBox1);
+			this->groupBox1->Controls->Add(this->password_txtBox);
+			this->groupBox1->Controls->Add(this->login_txtBox);
 			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Location = System::Drawing::Point(90, 81);
 			this->groupBox1->Name = L"groupBox1";
@@ -83,6 +92,23 @@ namespace Project2 {
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Регистрация";
+			// 
+			// passwordCheck_txtBox
+			// 
+			this->passwordCheck_txtBox->Location = System::Drawing::Point(55, 276);
+			this->passwordCheck_txtBox->Multiline = true;
+			this->passwordCheck_txtBox->Name = L"passwordCheck_txtBox";
+			this->passwordCheck_txtBox->Size = System::Drawing::Size(187, 30);
+			this->passwordCheck_txtBox->TabIndex = 6;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(52, 260);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(103, 13);
+			this->label3->TabIndex = 5;
+			this->label3->Text = L"Повторите пароль:";
 			// 
 			// label2
 			// 
@@ -102,21 +128,21 @@ namespace Project2 {
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"Логин:";
 			// 
-			// textBox2
+			// password_txtBox
 			// 
-			this->textBox2->Location = System::Drawing::Point(55, 217);
-			this->textBox2->Multiline = true;
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(187, 30);
-			this->textBox2->TabIndex = 2;
+			this->password_txtBox->Location = System::Drawing::Point(55, 217);
+			this->password_txtBox->Multiline = true;
+			this->password_txtBox->Name = L"password_txtBox";
+			this->password_txtBox->Size = System::Drawing::Size(187, 30);
+			this->password_txtBox->TabIndex = 2;
 			// 
-			// textBox1
+			// login_txtBox
 			// 
-			this->textBox1->Location = System::Drawing::Point(55, 124);
-			this->textBox1->Multiline = true;
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(187, 30);
-			this->textBox1->TabIndex = 1;
+			this->login_txtBox->Location = System::Drawing::Point(55, 124);
+			this->login_txtBox->Multiline = true;
+			this->login_txtBox->Name = L"login_txtBox";
+			this->login_txtBox->Size = System::Drawing::Size(187, 30);
+			this->login_txtBox->TabIndex = 1;
 			// 
 			// button1
 			// 
@@ -126,23 +152,7 @@ namespace Project2 {
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Зарегистрироваться";
 			this->button1->UseVisualStyleBackColor = true;
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(52, 260);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(103, 13);
-			this->label3->TabIndex = 5;
-			this->label3->Text = L"Повторите пароль:";
-			// 
-			// textBox3
-			// 
-			this->textBox3->Location = System::Drawing::Point(55, 276);
-			this->textBox3->Multiline = true;
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(187, 30);
-			this->textBox3->TabIndex = 6;
+			this->button1->Click += gcnew System::EventHandler(this, &RegistrationForm::button1_Click);
 			// 
 			// RegistrationForm
 			// 
@@ -157,5 +167,25 @@ namespace Project2 {
 			this->ResumeLayout(false);
 
 		}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		string username = msclr::interop::marshal_as<std::string>(login_txtBox->Text);
+		string password = msclr::interop::marshal_as<std::string>(password_txtBox->Text);
+		string check_password = msclr::interop::marshal_as<std::string>(passwordCheck_txtBox->Text);
+
+		User newUser(username, password, "client");
+
+		if (newUser.registerUser(username, password, check_password, "client"))
+		{
+			MessageBox::Show("Пользователь успешно зарегистрирован!");
+			login_txtBox->Clear();
+			password_txtBox->Clear();
+			passwordCheck_txtBox->Clear();
+		}
+		else
+		{
+			MessageBox::Show("Пароли не совпадают!");
+		}
+	}
 };
 }
