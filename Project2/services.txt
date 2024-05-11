@@ -1,0 +1,6 @@
+Classic manicure,Full preparation of nails for varnishing.,500,60
+Gel polish manicure,Gel polish coated manicure.,800,90
+Removing gel polish,Removing gel polish without damaging the nail plate.,300,30
+Pedicure classic,Treatment of feet and toes with varnish.,700,60
+Hardware pedicure,Professional foot care using hardware technology.,1000,90
+Foot massage,Relaxing foot massage to improve blood circulation.,400,30

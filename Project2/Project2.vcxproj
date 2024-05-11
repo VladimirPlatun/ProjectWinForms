@@ -119,12 +119,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddServiceForm.cpp" />
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="RegistrationForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
+    <ClCompile Include="Service.cpp" />
+    <ClCompile Include="ServiceForm.cpp" />
+    <ClCompile Include="ServiceInfoForm.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddServiceForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="LoginForm.h">
       <FileType>CppForm</FileType>
@@ -132,14 +139,30 @@
     <ClInclude Include="RegistrationForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Service.h" />
+    <ClInclude Include="ServiceForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ServiceInfoForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddServiceForm.resx">
+      <DependentUpon>AddServiceForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrationForm.resx">
       <DependentUpon>RegistrationForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceForm.resx">
+      <DependentUpon>ServiceForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceInfoForm.resx">
+      <DependentUpon>ServiceInfoForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,5 +1,6 @@
 #pragma once
 #include "RegistrationForm.h"
+#include "ServiceForm.h"
 
 namespace Project2 {
 
@@ -196,6 +197,12 @@ namespace Project2 {
 		else if (FileManager::validateUserCredentials("users.txt", username, password))
 		{
 			MessageBox::Show("Вход успешен!", "Авторизация", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+
+			ServiceForm^ service_Form = gcnew ServiceForm();
+			service_Form->StartPosition = FormStartPosition::CenterScreen;
+			service_Form->ShowDialog();
+
 		}
 		else
 		{
