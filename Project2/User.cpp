@@ -1,5 +1,4 @@
 #include "User.h"
-#include "FileManager.h"
 
 User::User() :username(""), password(""), role("client") {}
 
@@ -45,7 +44,17 @@ string User::registerUser(string username, string password, string confirmPasswo
 		return "Пароль должен быть длинее 4 символов и содержать хотя бы одну букву.";
 	}
 
-	string userData = username + " " + password;
+
+
+	string userData = trim(username) + " " + trim(password);
 	FileManager::saveToFile(filePath, userData);
 	return "success";
+}
+
+string User::trim(const string& str)
+{
+	auto start = str.find_first_not_of(" \t");
+	auto end = str.find_last_not_of(" \t");
+
+	return str.substr(start, (end - start + 1));
 }

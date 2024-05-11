@@ -35,15 +35,25 @@ namespace Project2 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::GroupBox^ grpBox1;
+	private: System::Windows::Forms::GroupBox^ LoginForm_AuthorizationGrpBox;
 	protected:
-	private: System::Windows::Forms::TextBox^ textBoxPassword;
-	private: System::Windows::Forms::TextBox^ textBoxLogin;
-	private: System::Windows::Forms::Button^ loginButton;
 
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Button^ registration_button;
+	protected:
+
+	private: System::Windows::Forms::TextBox^ LoginForm_textBoxPassword;
+	protected:
+
+	private: System::Windows::Forms::TextBox^ LoginForm_textBoxLogin;
+	private: System::Windows::Forms::Button^ LoginForm_loginButton;
+	private: System::Windows::Forms::Label^ LoginForm_passwordLabel;
+
+
+
+
+	private: System::Windows::Forms::Label^ LoginForm_loginLable;
+
+	private: System::Windows::Forms::Button^ LoginForm_registrationButton;
+
 
 
 	private:
@@ -59,94 +69,95 @@ namespace Project2 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->grpBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->registration_button = (gcnew System::Windows::Forms::Button());
-			this->textBoxPassword = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxLogin = (gcnew System::Windows::Forms::TextBox());
-			this->loginButton = (gcnew System::Windows::Forms::Button());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->grpBox1->SuspendLayout();
+			this->LoginForm_AuthorizationGrpBox = (gcnew System::Windows::Forms::GroupBox());
+			this->LoginForm_registrationButton = (gcnew System::Windows::Forms::Button());
+			this->LoginForm_textBoxPassword = (gcnew System::Windows::Forms::TextBox());
+			this->LoginForm_textBoxLogin = (gcnew System::Windows::Forms::TextBox());
+			this->LoginForm_loginButton = (gcnew System::Windows::Forms::Button());
+			this->LoginForm_passwordLabel = (gcnew System::Windows::Forms::Label());
+			this->LoginForm_loginLable = (gcnew System::Windows::Forms::Label());
+			this->LoginForm_AuthorizationGrpBox->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// grpBox1
+			// LoginForm_AuthorizationGrpBox
 			// 
-			this->grpBox1->Controls->Add(this->registration_button);
-			this->grpBox1->Controls->Add(this->textBoxPassword);
-			this->grpBox1->Controls->Add(this->textBoxLogin);
-			this->grpBox1->Controls->Add(this->loginButton);
-			this->grpBox1->Controls->Add(this->label2);
-			this->grpBox1->Controls->Add(this->label1);
-			this->grpBox1->Location = System::Drawing::Point(244, 118);
-			this->grpBox1->Name = L"grpBox1";
-			this->grpBox1->Size = System::Drawing::Size(388, 286);
-			this->grpBox1->TabIndex = 0;
-			this->grpBox1->TabStop = false;
-			this->grpBox1->Text = L"Авторизация";
+			this->LoginForm_AuthorizationGrpBox->Controls->Add(this->LoginForm_registrationButton);
+			this->LoginForm_AuthorizationGrpBox->Controls->Add(this->LoginForm_textBoxPassword);
+			this->LoginForm_AuthorizationGrpBox->Controls->Add(this->LoginForm_textBoxLogin);
+			this->LoginForm_AuthorizationGrpBox->Controls->Add(this->LoginForm_loginButton);
+			this->LoginForm_AuthorizationGrpBox->Controls->Add(this->LoginForm_passwordLabel);
+			this->LoginForm_AuthorizationGrpBox->Controls->Add(this->LoginForm_loginLable);
+			this->LoginForm_AuthorizationGrpBox->Location = System::Drawing::Point(244, 118);
+			this->LoginForm_AuthorizationGrpBox->Name = L"LoginForm_AuthorizationGrpBox";
+			this->LoginForm_AuthorizationGrpBox->Size = System::Drawing::Size(388, 286);
+			this->LoginForm_AuthorizationGrpBox->TabIndex = 0;
+			this->LoginForm_AuthorizationGrpBox->TabStop = false;
+			this->LoginForm_AuthorizationGrpBox->Text = L"Авторизация";
 			// 
-			// registration_button
+			// LoginForm_registrationButton
 			// 
-			this->registration_button->Location = System::Drawing::Point(95, 232);
-			this->registration_button->Name = L"registration_button";
-			this->registration_button->Size = System::Drawing::Size(211, 33);
-			this->registration_button->TabIndex = 5;
-			this->registration_button->Text = L"Зарегистрироваться";
-			this->registration_button->UseVisualStyleBackColor = true;
-			this->registration_button->Click += gcnew System::EventHandler(this, &LoginForm::button1_Click);
+			this->LoginForm_registrationButton->Location = System::Drawing::Point(95, 232);
+			this->LoginForm_registrationButton->Name = L"LoginForm_registrationButton";
+			this->LoginForm_registrationButton->Size = System::Drawing::Size(211, 33);
+			this->LoginForm_registrationButton->TabIndex = 5;
+			this->LoginForm_registrationButton->Text = L"Зарегистрироваться";
+			this->LoginForm_registrationButton->UseVisualStyleBackColor = true;
+			this->LoginForm_registrationButton->Click += gcnew System::EventHandler(this, &LoginForm::LoginForm_registrationButton_Click);
 			// 
-			// textBoxPassword
+			// LoginForm_textBoxPassword
 			// 
-			this->textBoxPassword->Location = System::Drawing::Point(135, 121);
-			this->textBoxPassword->Multiline = true;
-			this->textBoxPassword->Name = L"textBoxPassword";
-			this->textBoxPassword->Size = System::Drawing::Size(127, 30);
-			this->textBoxPassword->TabIndex = 4;
+			this->LoginForm_textBoxPassword->Location = System::Drawing::Point(135, 121);
+			this->LoginForm_textBoxPassword->Multiline = true;
+			this->LoginForm_textBoxPassword->Name = L"LoginForm_textBoxPassword";
+			this->LoginForm_textBoxPassword->Size = System::Drawing::Size(127, 30);
+			this->LoginForm_textBoxPassword->TabIndex = 4;
 			// 
-			// textBoxLogin
+			// LoginForm_textBoxLogin
 			// 
-			this->textBoxLogin->Location = System::Drawing::Point(135, 63);
-			this->textBoxLogin->Multiline = true;
-			this->textBoxLogin->Name = L"textBoxLogin";
-			this->textBoxLogin->Size = System::Drawing::Size(127, 30);
-			this->textBoxLogin->TabIndex = 3;
+			this->LoginForm_textBoxLogin->Location = System::Drawing::Point(135, 63);
+			this->LoginForm_textBoxLogin->Multiline = true;
+			this->LoginForm_textBoxLogin->Name = L"LoginForm_textBoxLogin";
+			this->LoginForm_textBoxLogin->Size = System::Drawing::Size(127, 30);
+			this->LoginForm_textBoxLogin->TabIndex = 3;
 			// 
-			// loginButton
+			// LoginForm_loginButton
 			// 
-			this->loginButton->Location = System::Drawing::Point(95, 177);
-			this->loginButton->Name = L"loginButton";
-			this->loginButton->Size = System::Drawing::Size(211, 34);
-			this->loginButton->TabIndex = 2;
-			this->loginButton->Text = L"Войти";
-			this->loginButton->UseVisualStyleBackColor = true;
+			this->LoginForm_loginButton->Location = System::Drawing::Point(95, 177);
+			this->LoginForm_loginButton->Name = L"LoginForm_loginButton";
+			this->LoginForm_loginButton->Size = System::Drawing::Size(211, 34);
+			this->LoginForm_loginButton->TabIndex = 2;
+			this->LoginForm_loginButton->Text = L"Войти";
+			this->LoginForm_loginButton->UseVisualStyleBackColor = true;
+			this->LoginForm_loginButton->Click += gcnew System::EventHandler(this, &LoginForm::LoginForm_loginButton_Click);
 			// 
-			// label2
+			// LoginForm_passwordLabel
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(175, 105);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(45, 13);
-			this->label2->TabIndex = 1;
-			this->label2->Text = L"Пароль";
+			this->LoginForm_passwordLabel->AutoSize = true;
+			this->LoginForm_passwordLabel->Location = System::Drawing::Point(175, 105);
+			this->LoginForm_passwordLabel->Name = L"LoginForm_passwordLabel";
+			this->LoginForm_passwordLabel->Size = System::Drawing::Size(45, 13);
+			this->LoginForm_passwordLabel->TabIndex = 1;
+			this->LoginForm_passwordLabel->Text = L"Пароль";
 			// 
-			// label1
+			// LoginForm_loginLable
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(175, 47);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(38, 13);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Логин";
+			this->LoginForm_loginLable->AutoSize = true;
+			this->LoginForm_loginLable->Location = System::Drawing::Point(175, 47);
+			this->LoginForm_loginLable->Name = L"LoginForm_loginLable";
+			this->LoginForm_loginLable->Size = System::Drawing::Size(38, 13);
+			this->LoginForm_loginLable->TabIndex = 0;
+			this->LoginForm_loginLable->Text = L"Логин";
 			// 
 			// LoginForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(890, 556);
-			this->Controls->Add(this->grpBox1);
+			this->Controls->Add(this->LoginForm_AuthorizationGrpBox);
 			this->Name = L"LoginForm";
 			this->Text = L"LoginForm";
-			this->grpBox1->ResumeLayout(false);
-			this->grpBox1->PerformLayout();
+			this->LoginForm_AuthorizationGrpBox->ResumeLayout(false);
+			this->LoginForm_AuthorizationGrpBox->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -155,12 +166,41 @@ namespace Project2 {
 		Form^ currentForm = nullptr;
 
 
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
+	private: System::Void LoginForm_registrationButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-
-		registration_button->Enabled = false;
+		LoginForm_registrationButton->Enabled = false;
 		RegistrationForm^ Registration_Form = gcnew RegistrationForm();
 		Registration_Form->Show();
+	}
+	private: System::Void LoginForm_loginButton_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		String^ temp_username = LoginForm_textBoxLogin->Text;
+		String^ temp_password = LoginForm_textBoxPassword->Text;
+
+		string username = msclr::interop::marshal_as<string>(LoginForm_textBoxLogin->Text);
+		string password = msclr::interop::marshal_as<string>(LoginForm_textBoxPassword->Text);
+
+		
+		if (String::IsNullOrWhiteSpace(temp_username))
+		{
+			MessageBox::Show("Поле логина не может быть пустым!", "Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+		else if (String::IsNullOrWhiteSpace(temp_password))
+		{
+			MessageBox::Show("Поле пароля не может быть пустым!", "Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+		else if (!FileManager::userExists("users.txt", username))
+		{
+			MessageBox::Show("Пользователя с таким именем не существует", "Ошибка входа", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		else if (FileManager::validateUserCredentials("users.txt", username, password))
+		{
+			MessageBox::Show("Вход успешен!", "Авторизация", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
+		else
+		{
+			MessageBox::Show("Неверное имя пользователя или пароль", "Ошибка входа", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
 	}
 };
 }

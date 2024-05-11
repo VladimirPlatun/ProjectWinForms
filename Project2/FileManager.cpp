@@ -28,3 +28,22 @@ bool FileManager::userExists(const string& filePath, const string& username)
 	}
 	return false;
 }
+
+bool FileManager::validateUserCredentials(const string& filePath, const string& username, const string& password)
+{
+	ifstream file(filePath);
+	string line;
+	while (getline(file, line))
+	{
+		stringstream ss(line);
+		string storedUsername, storedPassword;
+		ss >> storedUsername >> storedPassword;
+		if (storedUsername == username && storedPassword == password)
+		{
+			file.close();
+			return true;
+		}
+	}
+	file.close();
+	return false;
+}
