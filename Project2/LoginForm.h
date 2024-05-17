@@ -190,23 +190,35 @@ namespace Project2 {
 		{
 			MessageBox::Show("Поле пароля не может быть пустым!", "Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		}
-		else if (!FileManager::userExists("users.txt", username))
-		{
-			MessageBox::Show("Пользователя с таким именем не существует", "Ошибка входа", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		}
-		else if (FileManager::validateUserCredentials("users.txt", username, password))
-		{
-			MessageBox::Show("Вход успешен!", "Авторизация", MessageBoxButtons::OK, MessageBoxIcon::Information);
-
-
-			ServiceForm^ service_Form = gcnew ServiceForm();
-			service_Form->StartPosition = FormStartPosition::CenterScreen;
-			service_Form->ShowDialog();
-
-		}
 		else
 		{
-			MessageBox::Show("Неверное имя пользователя или пароль", "Ошибка входа", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			bool userExistsInClients = FileManager::userExists("clients.txt", username);
+			bool userExistsInAdmins = FileManager::userExists("admins.txt", username);
+
+			if (userExistsInClients && FileManager::validateUserCredentials("clients.txt", username, password))
+			{
+				MessageBox::Show("Вход успешен как клиент!", "Авторизация", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				// Здесь можно открыть клиентский интерфейс
+				ServiceForm^ service_Form = gcnew ServiceForm();
+				service_Form->StartPosition = FormStartPosition::CenterScreen;
+				service_Form->ShowDialog();
+			}
+			else if (userExistsInAdmins && FileManager::validateUserCredentials("admins.txt", username, password)) // Проверяем файл администраторов, если в файле клиентов не найден
+			{
+				MessageBox::Show("Вход успешен как администратор!", "Авторизация", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				// Здесь можно открыть администраторский интерфейс
+			}
+			else
+			{
+				if (!userExistsInClients && !userExistsInAdmins)
+				{
+					MessageBox::Show("Пользователя с таким именем не существует", "Ошибка входа", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				}
+				else
+				{
+					MessageBox::Show("Неверное имя пользователя или пароль", "Ошибка входа", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				}
+			}
 		}
 	}
 };

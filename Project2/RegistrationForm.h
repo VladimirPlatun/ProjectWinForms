@@ -61,6 +61,7 @@ namespace Project2 {
 
 
 	private: System::Windows::Forms::Label^ RegistrationForm_checkPasswordLabel;
+	private: System::Windows::Forms::CheckBox^ RegistrationForm_ifAdminCheckBox;
 
 
 
@@ -86,11 +87,13 @@ namespace Project2 {
 			this->RegistrationForm_passwordTxtBox = (gcnew System::Windows::Forms::TextBox());
 			this->RegistrationForm_loginTxtBox = (gcnew System::Windows::Forms::TextBox());
 			this->RegistrationForm_registrationButton = (gcnew System::Windows::Forms::Button());
+			this->RegistrationForm_ifAdminCheckBox = (gcnew System::Windows::Forms::CheckBox());
 			this->RegistrationForm_registrationGrpBox->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// RegistrationForm_registrationGrpBox
 			// 
+			this->RegistrationForm_registrationGrpBox->Controls->Add(this->RegistrationForm_ifAdminCheckBox);
 			this->RegistrationForm_registrationGrpBox->Controls->Add(this->RegistrationForm_passwordCheckTxtBox);
 			this->RegistrationForm_registrationGrpBox->Controls->Add(this->RegistrationForm_checkPasswordLabel);
 			this->RegistrationForm_registrationGrpBox->Controls->Add(this->RegistrationForm_passwordLabel);
@@ -166,6 +169,17 @@ namespace Project2 {
 			this->RegistrationForm_registrationButton->UseVisualStyleBackColor = true;
 			this->RegistrationForm_registrationButton->Click += gcnew System::EventHandler(this, &RegistrationForm::RegistrationForm_registrationButton_Click);
 			// 
+			// RegistrationForm_ifAdminCheckBox
+			// 
+			this->RegistrationForm_ifAdminCheckBox->AutoSize = true;
+			this->RegistrationForm_ifAdminCheckBox->Location = System::Drawing::Point(55, 160);
+			this->RegistrationForm_ifAdminCheckBox->Name = L"RegistrationForm_ifAdminCheckBox";
+			this->RegistrationForm_ifAdminCheckBox->Size = System::Drawing::Size(250, 17);
+			this->RegistrationForm_ifAdminCheckBox->TabIndex = 8;
+			this->RegistrationForm_ifAdminCheckBox->Text = L"Поставьте галочку, если вы администратор";
+			this->RegistrationForm_ifAdminCheckBox->UseVisualStyleBackColor = true;
+			this->RegistrationForm_ifAdminCheckBox->CheckedChanged += gcnew System::EventHandler(this, &RegistrationForm::RegistrationForm_ifAdminCheckBox_CheckedChanged);
+			// 
 			// RegistrationForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -184,9 +198,10 @@ private: System::Void RegistrationForm_registrationButton_Click(System::Object^ 
 		string username = msclr::interop::marshal_as<std::string>(RegistrationForm_loginTxtBox->Text);
 		string password = msclr::interop::marshal_as<std::string>(RegistrationForm_passwordTxtBox->Text);
 		string check_password = msclr::interop::marshal_as<std::string>(RegistrationForm_passwordCheckTxtBox->Text);
+		string role = RegistrationForm_ifAdminCheckBox->Checked ? "admin" : "client";
 
 		User newUser;
-		string result = newUser.registerUser(username, password, check_password, "client");
+		string result = newUser.registerUser(username, password, check_password, role);
 		if (result == "success")
 		{
 			MessageBox::Show("Пользователь успешно зарегистрирован!");
@@ -196,8 +211,10 @@ private: System::Void RegistrationForm_registrationButton_Click(System::Object^ 
 		}
 		else
 		{
-			MessageBox::Show(msclr::interop::marshal_as<System::String^>(result));
+			MessageBox::Show(msclr::interop::marshal_as<System::String^>(result));	
 		}
 	}
+private: System::Void RegistrationForm_ifAdminCheckBox_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

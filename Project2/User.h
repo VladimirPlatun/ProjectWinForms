@@ -22,7 +22,7 @@ public:
 	User(string username, string password, string role = "client");
 
 	bool login(string username, string password);
-	string registerUser(string username, string password, string confirmPassword, string role);
+	string registerUser(const std::string& username, const std::string& password, const std::string& confirmPassword, const std::string& role);
 	string trim(const string& str);
 
 };

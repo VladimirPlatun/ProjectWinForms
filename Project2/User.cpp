@@ -10,9 +10,9 @@ bool User::login(string username, string password)
 	return this->username == username && this->password == password;
 }
 
-string User::registerUser(string username, string password, string confirmPassword, string role)
+string User::registerUser(const std::string& username, const std::string& password, const std::string& confirmPassword, const std::string& role)
 {
-	string filePath = "users.txt";
+	string filePath = role == "admin" ? "admins.txt" : "clients.txt";
 
 	if (username.empty())
 	{
@@ -43,8 +43,6 @@ string User::registerUser(string username, string password, string confirmPasswo
 	{
 		return "Пароль должен быть длинее 4 символов и содержать хотя бы одну букву.";
 	}
-
-
 
 	string userData = trim(username) + " " + trim(password);
 	FileManager::saveToFile(filePath, userData);

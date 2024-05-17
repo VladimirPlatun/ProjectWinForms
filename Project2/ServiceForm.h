@@ -81,7 +81,7 @@ namespace Project2 {
 			this->ServiceForm_dataGridViewServices->Name = L"ServiceForm_dataGridViewServices";
 			this->ServiceForm_dataGridViewServices->Size = System::Drawing::Size(866, 386);
 			this->ServiceForm_dataGridViewServices->TabIndex = 0;
-			this->ServiceForm_dataGridViewServices->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ServiceForm::ServiceForm_dataGridViewServices_CellClick);
+			this->ServiceForm_dataGridViewServices->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ServiceForm::ServiceForm_dataGridViewServices_CellClick);
 			// 
 			// ServiceForm_LoadServicesButton
 			// 
@@ -191,7 +191,7 @@ namespace Project2 {
 	{
 		if (e->RowIndex >= 0 && e->ColumnIndex >= 0)
 		{
-			String^ serviceName = ServiceForm_dataGridViewServices->Rows[e->RowIndex]->Cells["ColumnName1"]->Value->ToString();
+				String^ serviceName = ServiceForm_dataGridViewServices->Rows[e->RowIndex]->Cells["ColumnName1"]->Value->ToString();
 			String^ description = ServiceForm_dataGridViewServices->Rows[e->RowIndex]->Cells["ColumnName2"]->Value->ToString();
 			String^ price = ServiceForm_dataGridViewServices->Rows[e->RowIndex]->Cells["ColumnName3"]->Value->ToString();
 			String^ duration = ServiceForm_dataGridViewServices->Rows[e->RowIndex]->Cells["ColumnName4"]->Value->ToString();
@@ -222,6 +222,5 @@ namespace Project2 {
 	
 		addServiceForm->Show();
 	}
-
 };
 }
