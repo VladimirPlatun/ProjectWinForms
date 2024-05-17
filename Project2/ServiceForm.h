@@ -14,12 +14,16 @@ using namespace std;
 
 namespace Project2 {
 
+	using namespace std;
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Text;
+
 
 	/// <summary>
 	/// Summary for ServiceForm
@@ -30,10 +34,9 @@ namespace Project2 {
 		ServiceForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+			cart = gcnew System::Collections::Generic::List<Service^>(); 
 		}
+
 
 	protected:
 		/// <summary>
@@ -52,8 +55,12 @@ namespace Project2 {
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container ^components;
-	private: System::Windows::Forms::DataGridView^ ServiceForm_dataGridViewServices;
-	private: System::Windows::Forms::Button^ ServiceForm_AddService;
+		private: System::Windows::Forms::DataGridView^ ServiceForm_dataGridViewServices;
+		private: System::Windows::Forms::Button^ ServiceForm_AddService;
+		System::Collections::Generic::List<Service^>^ cart;
+		private: System::Windows::Forms::Button^ btnAddToCart;
+		private: System::Windows::Forms::Button^ btnShowCart;
+
 
 #pragma region Windows Form Designer generated code
 
@@ -68,6 +75,34 @@ namespace Project2 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			
+			// 
+			// btnShowCart
+			// 
+			this->btnShowCart = (gcnew System::Windows::Forms::Button());	
+			this->btnShowCart->Location = System::Drawing::Point(330, 12);
+			this->btnShowCart->Name = L"btnShowCart";
+			this->btnShowCart->Size = System::Drawing::Size(100, 43);
+			this->btnShowCart->TabIndex = 4;
+			this->btnShowCart->Text = L"Показать корзину";
+			this->btnShowCart->UseVisualStyleBackColor = true;
+			this->btnShowCart->Click += gcnew System::EventHandler(this, &ServiceForm::btnShowCart_Click);
+
+			this->Controls->Add(this->btnShowCart);
+
+			// 
+			// btnAddToCart
+			// 
+			this->btnAddToCart = (gcnew System::Windows::Forms::Button());
+			this->btnAddToCart->Location = System::Drawing::Point(224, 12);
+			this->btnAddToCart->Name = L"btnAddToCart";
+			this->btnAddToCart->Size = System::Drawing::Size(100, 43);
+			this->btnAddToCart->TabIndex = 3;
+			this->btnAddToCart->Text = L"Добавить в корзину";
+			this->btnAddToCart->UseVisualStyleBackColor = true;
+			this->btnAddToCart->Click += gcnew System::EventHandler(this, &ServiceForm::btnAddToCart_Click);
+
+			this->Controls->Add(this->btnAddToCart);
 			this->ServiceForm_dataGridViewServices = (gcnew System::Windows::Forms::DataGridView());
 			this->ServiceForm_LoadServicesButton = (gcnew System::Windows::Forms::Button());
 			this->ServiceForm_AddService = (gcnew System::Windows::Forms::Button());
@@ -116,6 +151,39 @@ namespace Project2 {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ServiceForm_dataGridViewServices))->EndInit();
 			this->ResumeLayout(false);
 
+		}
+
+		private: System::Void btnAddToCart_Click(System::Object^ sender, System::EventArgs^ e) {
+			if (ServiceForm_dataGridViewServices->SelectedRows->Count > 0) {
+				DataGridViewRow^ selectedRow = ServiceForm_dataGridViewServices->SelectedRows[0];
+				String^ serviceName = selectedRow->Cells["ColumnName1"]->Value->ToString();
+				String^ description = selectedRow->Cells["ColumnName2"]->Value->ToString();
+				float price = float::Parse(selectedRow->Cells["ColumnName3"]->Value->ToString());
+				int duration = Int32::Parse(selectedRow->Cells["ColumnName4"]->Value->ToString());
+
+				Service^ service = gcnew Service(serviceName, description, price, duration);
+				cart->Add(service);
+
+				MessageBox::Show("Услуга добавлена в корзину.", "Информация", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else {
+				MessageBox::Show("Пожалуйста, выберите услугу для добавления в корзину.", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+
+		private: System::Void btnShowCart_Click(System::Object^ sender, System::EventArgs^ e) {
+			StringBuilder^ sb = gcnew StringBuilder();
+
+			sb->AppendLine("Содержимое корзины:");
+
+			for each (Service ^ service in cart) {
+				sb->Append("Название: " + service->getName() + ", ");
+				sb->Append("Описание: " + service->Description + ", ");
+				sb->Append("Цена: " + service->Price + ", ");
+				sb->AppendLine("Длительность: " + service->Duration + " минут");
+			}
+
+			MessageBox::Show(sb->ToString(), "Содержимое корзины", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
 
 		void btnLoadServices_Click(System::Object^ sender, System::EventArgs^ e)

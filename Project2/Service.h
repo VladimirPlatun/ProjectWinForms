@@ -1,17 +1,16 @@
 #pragma once
 #include <string>
 
-using namespace std;
+using namespace System;
 
-class Service {
-protected:
-    string name;
-    string description;
-    float price;
-    int duration; // в минутах
+public ref class Service {
 public:
-    Service(string n, string desc, float p, int dur) : name(n), description(desc), price(p), duration(dur) {}
+    String^ Name;
+    String^ Description;
+    float Price;
+    int Duration; // в минутах
+public:
+    Service(String^ n, String^ desc, float p, int dur) : Name(n), Description(desc), Price(p), Duration(dur) {}
 
-    string getName() const { return name; }
+    String^ getName() { return Name; }
 };
-
